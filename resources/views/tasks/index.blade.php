@@ -5,6 +5,7 @@
     <h1>タスク一覧</h1>
 
     @if (count($tasks) > 0)
+  
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -24,6 +25,7 @@
                 @endforeach
             </tbody>
         </table>
+        
     @endif
 
     {{-- タスク作成ページへのリンク --}}

@@ -93,11 +93,20 @@ class TasksController extends Controller
     {
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
-
+        if ($task->user_id == \Auth::id()) {
+            
+        
+        
+        //taskの所有者とログインユーザーが一致しているかどうか
+        //一致していなければトップページへリダイレクトさせる
         // タスク詳細ビューでそれを表示
         return view('tasks.show', [
             'task' => $task,
-        ]);
+        ]); }
+        
+        else{
+           return redirect('/'); 
+        }
     }
 
     /**
@@ -111,11 +120,16 @@ class TasksController extends Controller
     {
         // idの値でタスクを検索して取得
         $task = Task::findOrFail($id);
+        if ($task->user_id == \Auth::id()) {
 
         // タスク編集ビューでそれを表示
         return view('tasks.edit', [
             'task' => $task,
-        ]);
+        ]); }
+        
+         else{
+           return redirect('/'); 
+        }
     }
 
     /**
